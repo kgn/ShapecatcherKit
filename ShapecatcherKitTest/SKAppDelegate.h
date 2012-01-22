@@ -13,5 +13,6 @@
 
 @property (nonatomic, assign) IBOutlet NSWindow *window;
 @property (nonatomic, weak) IBOutlet NSTableView *tableView;
+@property (nonatomic, weak) IBOutlet NSProgressIndicator *spinner;
 
 @end

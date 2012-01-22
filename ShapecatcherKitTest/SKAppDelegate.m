@@ -17,15 +17,19 @@
 
 @synthesize window = _window;
 @synthesize tableView = _tableView;
+@synthesize spinner = _spinner;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification{
     [[ShapecatcherKit sharedKit] setApiKey:ShapecatcherKitTestApiKey];
+    [self.spinner startAnimation:self];
     [[ShapecatcherKit sharedKit] recognizeFromImage:[NSImage imageNamed:@"beta_test"] withSuccess:^(NSArray *shapes) {
         _shapes = shapes;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
+        [self.spinner stopAnimation:self];        
     } andFailure:^(NSError *error){
+        [self.spinner stopAnimation:self];                
         NSLog(@"%@", error);
     }];
 }
