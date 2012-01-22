@@ -32,6 +32,7 @@
 
 - (void)displayShape:(SKShape *)shape{
     self.shape = shape;
+    self.textField.stringValue = shape.fullname;
     self.utf8TextField.stringValue = shape.utf8;
     [self updateSegmentController];
 }
