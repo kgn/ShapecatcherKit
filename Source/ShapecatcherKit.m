@@ -6,13 +6,9 @@
 //  Copyright (c) 2012 David Keegan. All rights reserved.
 //
 
-#import "ShapecatcherKit.h"
 #import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
-
-@interface ShapecatcherKit()
-- (NSData *)dataForImage:(NSImage *)image;
-@end
+#import "ShapecatcherKit+Private.h"
 
 @implementation ShapecatcherKit{
     NSString *_apiKey;
@@ -58,7 +54,7 @@
         return;
     }
     
-    NSData *imageData = [self dataForImage:image];
+    NSData *imageData = [[self class] dataForImage:image];
     if(imageData == nil){
         if(failure){
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Invalid image data" 
@@ -70,8 +66,9 @@
     
     NSURL *url = [NSURL URLWithString:@"http://api.shapecatcher.com"];
     NSString *path = [NSString stringWithFormat:@"/recognize/%@", _apiKey];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:path parameters:nil constructingBodyWithBlock: ^(id <AFMultipartFormData>formData){
+    AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url] autorelease];
+    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:path parameters:nil 
+                                                    constructingBodyWithBlock: ^(id <AFMultipartFormData>formData){
         [formData appendPartWithFileData:imageData name:@"file" fileName:@"drawing.png" mimeType:@"image/png"];
     }];
     
@@ -84,11 +81,11 @@
     }
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, NSArray *response){
-        NSMutableArray *symbols = [NSMutableArray arrayWithCapacity:[response count]];
+        NSMutableArray *shapes = [NSMutableArray arrayWithCapacity:[response count]];
         for(NSDictionary *dictionary in response){
-            [symbols addObject:[SKShape shapeWithDictionary:dictionary]];
+            [shapes addObject:[SKShape shapeWithDictionary:dictionary]];
         }
-        success([NSArray arrayWithArray:symbols]);
+        success([NSArray arrayWithArray:shapes]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
         if(failure)failure(error);
     }];    
@@ -96,15 +93,32 @@
     [operation start];
 }
 
- - (NSData *)dataForImage:(NSImage *)image{
-     if(image == nil){
-         return nil;
-     }
-     CGImageRef cgimage = [image CGImageForProposedRect:nil context:nil hints:nil];
-     NSBitmapImageRep *bitimage = [[NSBitmapImageRep alloc] initWithCGImage:cgimage];
-     NSData *data = [bitimage representationUsingType:NSPNGFileType properties:nil];
-     [bitimage release];
-     return data;
- }
+#pragma private
+
++ (NSData *)dataForImage:(NSImage *)image{
+    if(image == nil){
+        return nil;
+    }
+    CGImageRef cgimage = [image CGImageForProposedRect:nil context:nil hints:nil];
+    NSBitmapImageRep *bitimage = [[NSBitmapImageRep alloc] initWithCGImage:cgimage];
+    NSData *data = [bitimage representationUsingType:NSPNGFileType properties:nil];
+    [bitimage release];
+    return data;
+}
+
++ (void)setRating:(NSString *)rating onRateId:(NSString *)rateId withSuccess:(void (^)())success andFailure:(void (^)(NSError *error))failure{    
+    if(success == nil){
+        return;
+    }
+    NSString *urlString = [NSString stringWithFormat:@"http://api.shapecatcher.com/rate/%@/%@", rating, rateId];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    AFHTTPRequestOperation *operation = [[[AFHTTPRequestOperation alloc] initWithRequest:request] autorelease];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+        success();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        if(failure)failure(error);
+    }];
+    [operation start];
+}
      
 @end

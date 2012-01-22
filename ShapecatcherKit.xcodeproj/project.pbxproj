@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		736D7EBF14CB7FE8004231E8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736D7EBE14CB7FE8004231E8 /* Cocoa.framework */; };
-		736D7ED514CB805E004231E8 /* ShapecatcherKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 736D7ED314CB805E004231E8 /* ShapecatcherKit.h */; };
+		736D7ED514CB805E004231E8 /* ShapecatcherKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 736D7ED314CB805E004231E8 /* ShapecatcherKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		736D7ED614CB805E004231E8 /* ShapecatcherKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 736D7ED414CB805E004231E8 /* ShapecatcherKit.m */; };
 		73A924C114CBB09500E2E20A /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 73A924BD14CBB09500E2E20A /* JSONKit.h */; };
 		73A924C214CBB09500E2E20A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A924BE14CBB09500E2E20A /* JSONKit.m */; };
@@ -34,8 +34,9 @@
 		73A924EF14CBB09F00E2E20A /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A924D914CBB09F00E2E20A /* AFXMLRequestOperation.m */; };
 		73A924F014CBB09F00E2E20A /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 73A924DA14CBB09F00E2E20A /* UIImageView+AFNetworking.h */; };
 		73A924F114CBB09F00E2E20A /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A924DB14CBB09F00E2E20A /* UIImageView+AFNetworking.m */; };
-		73A924FE14CBBB9200E2E20A /* SKShape.h in Headers */ = {isa = PBXBuildFile; fileRef = 73A924FC14CBBB9200E2E20A /* SKShape.h */; };
+		73A924FE14CBBB9200E2E20A /* SKShape.h in Headers */ = {isa = PBXBuildFile; fileRef = 73A924FC14CBBB9200E2E20A /* SKShape.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73A924FF14CBBB9200E2E20A /* SKShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A924FD14CBBB9200E2E20A /* SKShape.m */; };
+		73A9252314CCB01D00E2E20A /* ShapecatcherKit+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 73A9252114CCB01D00E2E20A /* ShapecatcherKit+Private.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		73A924FA14CBB80A00E2E20A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		73A924FC14CBBB9200E2E20A /* SKShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKShape.h; path = Source/SKShape.h; sourceTree = "<group>"; };
 		73A924FD14CBBB9200E2E20A /* SKShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKShape.m; path = Source/SKShape.m; sourceTree = "<group>"; };
+		73A9252114CCB01D00E2E20A /* ShapecatcherKit+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ShapecatcherKit+Private.h"; path = "Source/ShapecatcherKit+Private.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				736D7ED314CB805E004231E8 /* ShapecatcherKit.h */,
 				736D7ED414CB805E004231E8 /* ShapecatcherKit.m */,
+				73A9252114CCB01D00E2E20A /* ShapecatcherKit+Private.h */,
 				73A924FC14CBBB9200E2E20A /* SKShape.h */,
 				73A924FD14CBBB9200E2E20A /* SKShape.m */,
 				73A924BB14CBB09500E2E20A /* JSONKit */,
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				736D7ED514CB805E004231E8 /* ShapecatcherKit.h in Headers */,
+				73A924FE14CBBB9200E2E20A /* SKShape.h in Headers */,
 				73A924C114CBB09500E2E20A /* JSONKit.h in Headers */,
 				73A924DC14CBB09F00E2E20A /* AFHTTPClient.h in Headers */,
 				73A924DE14CBB09F00E2E20A /* AFHTTPRequestOperation.h in Headers */,
@@ -177,7 +181,7 @@
 				73A924EC14CBB09F00E2E20A /* AFURLConnectionOperation.h in Headers */,
 				73A924EE14CBB09F00E2E20A /* AFXMLRequestOperation.h in Headers */,
 				73A924F014CBB09F00E2E20A /* UIImageView+AFNetworking.h in Headers */,
-				73A924FE14CBBB9200E2E20A /* SKShape.h in Headers */,
+				73A9252314CCB01D00E2E20A /* ShapecatcherKit+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,8 @@
 //
 
 #import "SKShape.h"
+#import "ShapecatcherKit+Private.h"
+#import "AFImageRequestOperation.h"
 
 @interface NSDictionary(SKJSON)
 - (CGFloat)floatSafelyFromKey:(id)key;
@@ -45,6 +47,29 @@
         _utf8 = [[dictionary stringSafelyFromKey:@"utf8"] copy];
     }
     return self;
+}
+
+- (void)requestCharacterImageWithSuccess:(void (^)(NSImage *image))success 
+                              andFailure:(void (^)(NSError *error))failure{
+    if(success == nil){
+        return;
+    }
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:self.characterImageUrl];
+    AFImageRequestOperation *operation = 
+    [AFImageRequestOperation 
+     imageRequestOperationWithRequest:request imageProcessingBlock:nil cacheName:nil 
+     success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSImage *image){
+        success(image);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        if(failure)failure(error);
+    }];
+    [operation start];
+}
+
+- (void)setRating:(NSString *)rating withSuccess:(void (^)())success 
+       andFailure:(void (^)(NSError *error))failure{
+    [ShapecatcherKit setRating:rating onRateId:self.rateId withSuccess:success andFailure:failure];
 }
 
 - (NSUInteger)hash{
@@ -104,7 +129,7 @@
         return nil;
     }
     NSString *urlString =
-    [[self objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [[self objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUnicodeStringEncoding];
     return [NSURL URLWithString:urlString];
 }
 

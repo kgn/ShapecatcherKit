@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SKAppDelegate : NSObject <NSApplicationDelegate>
+@interface SKAppDelegate : NSObject 
+<NSApplicationDelegate, NSTableViewDelegate, NSTableViewDataSource>
 
-@property (assign) IBOutlet NSWindow *window;
+@property (nonatomic, assign) IBOutlet NSWindow *window;
+@property (nonatomic, weak) IBOutlet NSTableView *tableView;
 
 @end

@@ -6,17 +6,11 @@
 //  Copyright (c) 2012 David Keegan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
-//"character_image_url" = "http://shapecatcher.com/unicode_img/226.png";
-//codepoint = 226;
-//"codepoint_hex" = 0xe2;
-//fullname = "Latin small letter a with circumflex";
-//rateId = 2267de14ea307d3f830b0e31232de0;
-//score = "1757.54";
-//"unicode_block" = "Latin-1 Supplement";
-//"unicode_block_url" = "http://shapecatcher.com/unicode/block/Latin-1_Supplement.html";
-//utf8 = "\U00e2";
+static NSString * const SKShapeGoodRating = @"good";
+static NSString * const SKShapeBadRating  = @"bad";
+static NSString * const SKShapeUndoRating = @"undo";
 
 @interface SKShape : NSObject
 
@@ -32,5 +26,8 @@
 
 + (id)shapeWithDictionary:(NSDictionary *)dictionary;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
-
+- (void)requestCharacterImageWithSuccess:(void (^)(NSImage *image))success 
+                              andFailure:(void (^)(NSError *error))failure;
+- (void)setRating:(NSString *)rating withSuccess:(void (^)())success 
+       andFailure:(void (^)(NSError *error))failure;
 @end
