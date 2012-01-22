@@ -43,7 +43,8 @@
     [self recognizeFromImage:image withSuccess:success failure:failure andProgress:nil];
 }
 
-- (void)recognizeFromImage:(NSImage *)image withSuccess:(void (^)(NSArray *shapes))success failure:(void (^)(NSError *error))failure andProgress:(void (^)(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite))progress{
+- (void)recognizeFromImage:(NSImage *)image withSuccess:(void (^)(NSArray *shapes))success failure:(void (^)(NSError *error))failure 
+               andProgress:(void (^)(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite))progress{
     if(_apiKey == nil){
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:NSLocalizedString(@"The API key was not set, use [ShapecatcherKit setApiKey:] to set it", nil) 
                                                              forKey:NSLocalizedRecoverySuggestionErrorKey];
@@ -57,7 +58,7 @@
         return;
     }
     
-    NSData *imageData = [self dataForImage:image];    
+    NSData *imageData = [self dataForImage:image];
     if(imageData == nil){
         if(failure){
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Invalid image data" 
@@ -83,7 +84,11 @@
     }
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, NSArray *response){
-        success(response);
+        NSMutableArray *symbols = [NSMutableArray arrayWithCapacity:[response count]];
+        for(NSDictionary *dictionary in response){
+            [symbols addObject:[SKShape shapeWithDictionary:dictionary]];
+        }
+        success([NSArray arrayWithArray:symbols]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
         if(failure)failure(error);
     }];    

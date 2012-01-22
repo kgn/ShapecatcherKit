@@ -34,6 +34,8 @@
 		73A924EF14CBB09F00E2E20A /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A924D914CBB09F00E2E20A /* AFXMLRequestOperation.m */; };
 		73A924F014CBB09F00E2E20A /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 73A924DA14CBB09F00E2E20A /* UIImageView+AFNetworking.h */; };
 		73A924F114CBB09F00E2E20A /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A924DB14CBB09F00E2E20A /* UIImageView+AFNetworking.m */; };
+		73A924FE14CBBB9200E2E20A /* SKShape.h in Headers */ = {isa = PBXBuildFile; fileRef = 73A924FC14CBBB9200E2E20A /* SKShape.h */; };
+		73A924FF14CBBB9200E2E20A /* SKShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A924FD14CBBB9200E2E20A /* SKShape.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,8 @@
 		73A924DA14CBB09F00E2E20A /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		73A924DB14CBB09F00E2E20A /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		73A924FA14CBB80A00E2E20A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		73A924FC14CBBB9200E2E20A /* SKShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKShape.h; path = Source/SKShape.h; sourceTree = "<group>"; };
+		73A924FD14CBBB9200E2E20A /* SKShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKShape.m; path = Source/SKShape.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,8 @@
 			children = (
 				736D7ED314CB805E004231E8 /* ShapecatcherKit.h */,
 				736D7ED414CB805E004231E8 /* ShapecatcherKit.m */,
+				73A924FC14CBBB9200E2E20A /* SKShape.h */,
+				73A924FD14CBBB9200E2E20A /* SKShape.m */,
 				73A924BB14CBB09500E2E20A /* JSONKit */,
 				73A924C514CBB09F00E2E20A /* AFNetworking */,
 				736D7EBD14CB7FE8004231E8 /* Frameworks */,
@@ -171,6 +177,7 @@
 				73A924EC14CBB09F00E2E20A /* AFURLConnectionOperation.h in Headers */,
 				73A924EE14CBB09F00E2E20A /* AFXMLRequestOperation.h in Headers */,
 				73A924F014CBB09F00E2E20A /* UIImageView+AFNetworking.h in Headers */,
+				73A924FE14CBBB9200E2E20A /* SKShape.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +255,7 @@
 				73A924ED14CBB09F00E2E20A /* AFURLConnectionOperation.m in Sources */,
 				73A924EF14CBB09F00E2E20A /* AFXMLRequestOperation.m in Sources */,
 				73A924F114CBB09F00E2E20A /* UIImageView+AFNetworking.m in Sources */,
+				73A924FF14CBBB9200E2E20A /* SKShape.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
