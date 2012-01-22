@@ -23,6 +23,7 @@ static NSString * const SKShapeUndoRating = @"undo";
 @property (nonatomic, readonly) NSString *unicodeBlock;
 @property (nonatomic, readonly) NSURL *unicodeBlockUrl;
 @property (nonatomic, readonly) NSString *utf8;
+@property (nonatomic, readonly) NSString *rating;
 
 + (id)shapeWithDictionary:(NSDictionary *)dictionary;
 - (id)initWithDictionary:(NSDictionary *)dictionary;

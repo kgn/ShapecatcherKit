@@ -29,7 +29,7 @@
 @synthesize unicodeBlock = _unicodeBlock;
 @synthesize unicodeBlockUrl = _unicodeBlockUrl;
 @synthesize utf8 = _utf8;
-
+@synthesize rating = _rating;
 + (id)shapeWithDictionary:(NSDictionary *)dictionary{
     return [[[[self class] alloc] initWithDictionary:dictionary] autorelease];
 }
@@ -69,7 +69,22 @@
 
 - (void)setRating:(NSString *)rating withSuccess:(void (^)())success 
        andFailure:(void (^)(NSError *error))failure{
-    [ShapecatcherKit setRating:rating onRateId:self.rateId withSuccess:success andFailure:failure];
+    if([rating isEqualToString:self.rating] || 
+       ([rating isEqualToString:SKShapeUndoRating] && self.rating == nil)){
+        return;
+    }
+    NSString *previusRating = self.rating;
+    [_rating release];
+    _rating = nil; 
+    if(![rating isEqualToString:SKShapeUndoRating]){
+        _rating = [rating copy];
+    }
+    [ShapecatcherKit setRating:rating onRateId:self.rateId withSuccess:success andFailure:^(NSError *error){
+        if(![rating isEqualToString:SKShapeUndoRating]){
+            _rating = previusRating;
+        }
+        if(failure)failure(error);
+    }];
 }
 
 - (NSUInteger)hash{
@@ -96,6 +111,7 @@
     [_unicodeBlock release];
     [_unicodeBlockUrl release];
     [_utf8 release];
+    [_rating release];
     [super dealloc];
 }
 

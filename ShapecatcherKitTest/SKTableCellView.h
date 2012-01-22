@@ -13,6 +13,7 @@
 
 @property (nonatomic, weak) SKShape *shape;
 @property (nonatomic, weak) IBOutlet NSTextField *utf8TextField;
+@property (nonatomic, weak) IBOutlet NSSegmentedControl *segmentController;
 
 - (void)displayShape:(SKShape *)shape;
 
