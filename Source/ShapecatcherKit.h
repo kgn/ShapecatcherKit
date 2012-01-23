@@ -13,7 +13,6 @@
 
 + (ShapecatcherKit *)sharedKit;
 
-- (id)initWithApiKey:(NSString *)apiKey;
 - (void)setApiKey:(NSString *)apiKey;
 
 - (void)recognizeFromImage:(NSImage *)image withSuccess:(void (^)(NSArray *shapes))success andFailure:(void (^)(NSError *error))failure;

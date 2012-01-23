@@ -30,6 +30,7 @@
 @synthesize unicodeBlockUrl = _unicodeBlockUrl;
 @synthesize utf8 = _utf8;
 @synthesize rating = _rating;
+
 + (id)shapeWithDictionary:(NSDictionary *)dictionary{
     return [[[[self class] alloc] initWithDictionary:dictionary] autorelease];
 }

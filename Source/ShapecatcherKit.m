@@ -22,13 +22,6 @@
     return _sharedKit;
 }
 
-- (id)initWithApiKey:(NSString *)apiKey{
-    if((self = [super init])){
-        [self setApiKey:apiKey];
-    }
-    return self;
-}
-
 - (void)setApiKey:(NSString *)apiKey{
     [_apiKey release];
     _apiKey = nil;
