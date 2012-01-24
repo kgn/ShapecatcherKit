@@ -34,4 +34,4 @@ The `shapes` array contains `SKShape` objects with all the data from the api. Th
 
 Shapes can be rated good(`SKShapeGoodRating`) bad(`SKShapeBadRating`) or the previous rating can be undone with undo(`SKShapeUndoRating`).
 
-*Please note the sample app does not include drawing code, it's purpose is only to demonstrate how to use the api*
+*Please note the sample app does not include drawing code, it's purpose is only to demonstrate how to use the api.*
