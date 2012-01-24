@@ -20,7 +20,7 @@ First set your api key on the `sharedKit`:
 Then you can recognize `NSImage`s asynchronously:
 
 ``` obj-c
-[[ShapecatcherKit sharedKit] recognizeFromImage:image withSuccess:^(NSArray *shapes) {
+[[ShapecatcherKit sharedKit] recognizeFromImage:image withSuccess:^(NSArray *shapes){
     NSLog(@"%@", shapes);
 } andFailure:nil];
 ```
@@ -39,7 +39,7 @@ The `shapes` array contains `SKShape` objects with all the data from the api. Th
 } andFailure:nil];
 ```
 
-Shapes can be rated good(`SKShapeGoodRating`) bad(`SKShapeBadRating`) or the previous rating can be undone with undo(`SKShapeUndoRating`).
+Shapes can be rated *good*(`SKShapeGoodRating`) *bad*(`SKShapeBadRating`) or the previous rating can be undone with *undo*(`SKShapeUndoRating`).
 
 ---
 
