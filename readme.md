@@ -1,6 +1,6 @@
 **ShapecatcherKit** is an Objective-C framework for [shapecatcher.com](http://shapecatcher.com) that provides full support for the API to recognize unicode shapes from drawings and rate the results.
 
-![](Screenshot.png)
+![](https://github.com/kgn/ShapecatcherKit/raw/master/Screenshot.png)
 
 The sample application included with this project demonstrates how to fully use the API but here are some code snippets.
 
