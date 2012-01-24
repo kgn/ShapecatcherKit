@@ -2,6 +2,10 @@
 
 ![](https://github.com/kgn/ShapecatcherKit/raw/master/Screenshot.png)
 
+*Please note the sample app does not include drawing code, it's purpose is only to demonstrate how to use the api.*
+
+# How to…
+
 The sample application included with this project demonstrates how to fully use the API but here are some code snippets.
 
 First set your api key on the `sharedKit`:
@@ -34,4 +38,6 @@ The `shapes` array contains `SKShape` objects with all the data from the api. Th
 
 Shapes can be rated good(`SKShapeGoodRating`) bad(`SKShapeBadRating`) or the previous rating can be undone with undo(`SKShapeUndoRating`).
 
-*Please note the sample app does not include drawing code, it's purpose is only to demonstrate how to use the api.*
+---
+
+**ShapecatcherKit** is built on top of [AFNetworking](https://github.com/AFNetworking/AFNetworking) and [JSONKit](https://github.com/johnezang/JSONKit).
