@@ -4,6 +4,9 @@
 
 *Please note the sample app does not include drawing code, it's purpose is only to demonstrate how to use the api.*
 
+*Also `ShapecatcherKitTestApiKey.h` is referenced from the sample app but missing from the project because it 
+contains my private api key, you will need to request your own :)*
+
 # How to…
 
 The sample application included with this project demonstrates how to fully use the API but here are some code snippets.
@@ -11,7 +14,7 @@ The sample application included with this project demonstrates how to fully use 
 First set your api key on the `sharedKit`:
 
 ``` obj-c
-[[ShapecatcherKit sharedKit] setApiKey:ShapecatcherKitTestApiKey];
+[[ShapecatcherKit sharedKit] setApiKey:@"<your private api key>"];
 ```
 
 Then you can recognize `NSImage`s asynchronously:
