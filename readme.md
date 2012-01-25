@@ -43,4 +43,6 @@ Shapes can be rated *good*(`SKShapeGoodRating`) *bad*(`SKShapeBadRating`) or the
 
 ---
 
+**ShapecatcherKit** is available under the MIT license. See the LICENSE file for more info.
+
 **ShapecatcherKit** is built on top of [AFNetworking](https://github.com/AFNetworking/AFNetworking) and [JSONKit](https://github.com/johnezang/JSONKit).
