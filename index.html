@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ShapecatcherKit by kgn</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ShapecatcherKit</h1>
+<p>An Objective-CFramework for the shapecatcher.com api</p>
+        <p class="view"><a href="https://github.com/kgn/ShapecatcherKit">View the Project on GitHub <small>kgn/ShapecatcherKit</small></a></p>
+        <ul>
+          <li><a href="https://github.com/kgn/ShapecatcherKit/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/kgn/ShapecatcherKit/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/kgn/ShapecatcherKit">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><strong>ShapecatcherKit</strong> is an Objective-C framework for <a href="http://shapecatcher.com">shapecatcher.com</a> that provides full support for the API to recognize unicode shapes from drawings and rate the results.</p>
+
+<p><img src="https://github.com/kgn/ShapecatcherKit/raw/master/Screenshot.png" alt=""></p>
+
+<p><em>Please note the sample app does not include drawing code, it's purpose is only to demonstrate how to use the api.</em></p>
+
+<p><em>Also <code>ShapecatcherKitTestApiKey.h</code> is referenced from the sample app but missing from the project because it 
+contains my private api key, you will need to request your own :)</em></p>
+
+<h1>How to…</h1>
+
+<p>The sample application included with this project demonstrates how to fully use the API but here are some code snippets.</p>
+
+<p>First set your api key on the <code>sharedKit</code>:</p>
+
+<div class="highlight">
+<pre><span class="p">[[</span><span class="n">ShapecatcherKit</span> <span class="n">sharedKit</span><span class="p">]</span> <span class="nl">setApiKey:</span><span class="s">@"&lt;your private api key&gt;"</span><span class="p">];</span>
+</pre>
+</div>
+
+
+<p>Then you can recognize <code>NSImage</code>s asynchronously:</p>
+
+<div class="highlight">
+<pre><span class="p">[[</span><span class="n">ShapecatcherKit</span> <span class="n">sharedKit</span><span class="p">]</span> <span class="nl">recognizeFromImage:</span><span class="n">image</span> <span class="nl">withSuccess:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">shapes</span><span class="p">){</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">shapes</span><span class="p">);</span>
+<span class="p">}</span> <span class="nl">andFailure:</span><span class="nb">nil</span><span class="p">];</span>
+</pre>
+</div>
+
+
+<p>The <code>shapes</code> array contains <code>SKShape</code> objects with all the data from the api. This object also allows you to asynchronously request an image of the shape and rate how well the shape matches the drawing:</p>
+
+<div class="highlight">
+<pre><span class="p">[</span><span class="n">shape</span> <span class="nl">requestCharacterImageWithSuccess:</span><span class="o">^</span><span class="p">(</span><span class="n">NSImage</span> <span class="o">*</span><span class="n">image</span><span class="p">){</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">image</span><span class="p">);</span>
+<span class="p">}</span> <span class="nl">andFailure:</span><span class="nb">nil</span><span class="p">];</span>
+</pre>
+</div>
+
+
+<div class="highlight">
+<pre><span class="p">[</span><span class="n">shape</span> <span class="nl">setRating:</span><span class="n">SKShapeGoodRating</span> <span class="nl">withSuccess:</span><span class="o">^</span><span class="p">(){</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">image</span><span class="p">);</span>
+<span class="p">}</span> <span class="nl">andFailure:</span><span class="nb">nil</span><span class="p">];</span>
+</pre>
+</div>
+
+
+<p>Shapes can be rated <em>good</em>(<code>SKShapeGoodRating</code>) <em>bad</em>(<code>SKShapeBadRating</code>) or the previous rating can be undone with <em>undo</em>(<code>SKShapeUndoRating</code>).</p>
+
+<hr><p><strong>ShapecatcherKit</strong> is available under the MIT license. See the LICENSE file for more info.</p>
+
+<p><strong>ShapecatcherKit</strong> is built on top of <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> and <a href="https://github.com/johnezang/JSONKit">JSONKit</a>.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/kgn">kgn</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
